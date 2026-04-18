@@ -60,14 +60,12 @@ npm run dev                   # http://localhost:3000
 - **Source modules**: pure async functions that fetch, cache, and return a shaped snapshot. Each follows the same pattern — try-fetch → write cache → return fresh; on error → return last cache with `stale: true`.
 - **Caching**: per-source JSON files in `cache/` with source-specific TTLs (fuel 24h, weather 15min, carriers 6h). Directory is kept in git via `.gitkeep`; cache contents are gitignored.
 - **Frontend**: plain HTML/CSS/JS. Four cards fetched in parallel via `Promise.allSettled` so one slow source doesn't block the others. Dark theme driven entirely by CSS variables in `:root`.
-- **Morning email**: `jobs/morningEmail.js` is a standalone script invoked by Windows Task Scheduler at 6:45 AM (after the 6:00 / 6:30 stock scanners). It hits the same `/api/*` endpoints and renders an HTML + plain-text summary.
+- **Morning email**: `jobs/morningEmail.js` is a standalone script invoked by Windows Task Scheduler at 6:45 AM. It hits the same `/api/*` endpoints and renders an HTML + plain-text summary.
 
 ## Scheduling
 
 | Time | Job |
 |---|---|
-| 6:00 AM | stock scanner (existing) |
-| 6:30 AM | stock scanner (existing) |
 | 6:45 AM | `npm run email` — freight scanner summary |
 
 ## Status

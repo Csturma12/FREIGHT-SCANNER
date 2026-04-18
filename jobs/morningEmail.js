@@ -1,6 +1,5 @@
 #!/usr/bin/env node
-// Morning summary email — triggered 6:45 AM via Windows Task Scheduler,
-// after the existing 6:00 and 6:30 stock scanner jobs.
+// Morning summary email — triggered 6:45 AM via Windows Task Scheduler.
 // Next: fetch /api/* endpoints, render HTML + plain text, send via nodemailer.
 
 require('dotenv').config();
