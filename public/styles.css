@@ -159,3 +159,81 @@ main {
   main { padding: 1rem; }
   .site-header h1 { font-size: 0.85rem; letter-spacing: 0.18em; }
 }
+
+/* Fuel card */
+.fuel-hero { margin-bottom: 0.35rem; }
+.fuel-price {
+  font-family: var(--mono);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 16px rgba(0, 229, 255, 0.25);
+}
+.fuel-unit { font-size: 0.85rem; color: var(--text-muted); margin-left: 0.25rem; font-weight: 400; }
+.fuel-wow {
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 0.3rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+}
+.fuel-wow.up { color: var(--accent-alert); }
+.fuel-wow.down { color: var(--accent-positive); }
+.fuel-wow.flat { color: var(--text-muted); }
+.fuel-arrow { font-size: 0.8rem; }
+.fuel-pct { font-weight: 400; opacity: 0.85; }
+.fuel-label { color: var(--text-dim); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; margin-left: 0.2rem; }
+.fuel-asof { color: var(--text-muted); font-size: 0.72rem; font-family: var(--mono); margin-top: 0.25rem; }
+
+.fuel-sparkline {
+  display: block;
+  width: 100%;
+  height: 38px;
+  margin: 0.6rem 0 0.85rem;
+}
+.fuel-sparkline polyline { fill: none; stroke-width: 1.25; stroke-linejoin: round; stroke-linecap: round; }
+.fuel-sparkline.up polyline { stroke: var(--accent-alert); }
+.fuel-sparkline.down polyline { stroke: var(--accent-positive); }
+
+.fuel-regions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(115px, 1fr));
+  gap: 0.45rem;
+  margin-bottom: 0.7rem;
+}
+.fuel-region {
+  padding: 0.45rem 0.55rem;
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.fuel-region-name {
+  font-size: 0.64rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.15rem;
+}
+.fuel-region-price {
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.fuel-region-wow { font-family: var(--mono); font-size: 0.72rem; margin-top: 0.1rem; }
+.fuel-region-wow.up { color: var(--accent-alert); }
+.fuel-region-wow.down { color: var(--accent-positive); }
+.fuel-region-wow.flat { color: var(--text-muted); }
+
+.fuel-highlights {
+  margin: 0;
+  padding: 0 0 0 1rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+.fuel-highlights li { margin: 0.2rem 0; }
