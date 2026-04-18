@@ -1,0 +1,7 @@
+node_modules/
+.env
+cache/*.json
+.claude/
+.DS_Store
+npm-debug.log*
+.replit

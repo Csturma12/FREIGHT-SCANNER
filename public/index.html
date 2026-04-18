@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>Freight Market Scanner</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>Freight <span class="accent">Market Scanner</span></h1>
+      <span class="timestamp" id="last-updated">—</span>
+    </header>
+
+    <main>
+      <section class="card" data-section="fuel">
+        <div class="card-header">
+          <h2>Fuel</h2>
+          <span class="badge" data-status>…</span>
+        </div>
+        <div class="card-body" data-body>Loading…</div>
+      </section>
+
+      <section class="card" data-section="weather">
+        <div class="card-header">
+          <h2>Corridor Conditions</h2>
+          <span class="badge" data-status>…</span>
+        </div>
+        <div class="card-body" data-body>Loading…</div>
+      </section>
+
+      <section class="card" data-section="carriers">
+        <div class="card-header">
+          <h2>Carriers</h2>
+          <span class="badge" data-status>…</span>
+        </div>
+        <div class="card-body" data-body>Loading…</div>
+      </section>
+
+      <section class="card" data-section="regulatory">
+        <div class="card-header">
+          <h2>Regulatory Watch</h2>
+          <span class="badge" data-status>…</span>
+        </div>
+        <div class="card-body" data-body>Loading…</div>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

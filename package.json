@@ -1,0 +1,16 @@
+{
+  "name": "freight-scanner",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Daily freight market intelligence dashboard (fuel, corridor conditions, carriers, regulatory).",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "email": "node jobs/morningEmail.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}
