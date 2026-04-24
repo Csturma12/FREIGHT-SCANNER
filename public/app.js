@@ -33,9 +33,75 @@ function render(section, payload) {
     renderFuel(bodyEl, payload);
   } else if (section === 'weather' && Array.isArray(payload.corridors) && payload.corridors.length) {
     renderWeather(bodyEl, payload);
+  } else if (section === 'regulatory' && (payload.federalRegister || payload.industryNews)) {
+    renderRegulatory(bodyEl, payload);
   } else {
     bodyEl.innerHTML = `<pre>${escapeHtml(JSON.stringify(payload, null, 2))}</pre>`;
   }
+}
+
+function renderRegulatory(body, payload) {
+  const fr = payload.federalRegister || [];
+  const news = payload.industryNews || [];
+  body.innerHTML = `
+    ${payload.highlights && payload.highlights.length ? `
+      <ul class="reg-highlights">
+        ${payload.highlights.map((h) => `<li>${escapeHtml(h)}</li>`).join('')}
+      </ul>` : ''}
+    ${fr.length ? `
+      <div class="reg-section">
+        <h3 class="reg-section-title">Federal Register <span class="reg-count">${fr.length}</span></h3>
+        <ul class="reg-list">
+          ${fr.slice(0, 5).map(renderFrItem).join('')}
+        </ul>
+      </div>` : ''}
+    ${news.length ? `
+      <div class="reg-section">
+        <h3 class="reg-section-title">Industry Press <span class="reg-count">${news.length}</span></h3>
+        <ul class="reg-list">
+          ${news.slice(0, 5).map(renderNewsItem).join('')}
+        </ul>
+      </div>` : ''}
+    ${!fr.length && !news.length ? '<div class="reg-empty">No regulatory activity to report.</div>' : ''}
+  `;
+}
+
+function renderFrItem(d) {
+  const typeSlug = (d.type || 'Notice').toLowerCase().replace(/\s+/g, '-');
+  return `
+    <li class="reg-item">
+      <div class="reg-item-meta">
+        <span class="reg-type reg-type-${escapeHtml(typeSlug)}">${escapeHtml(d.type || 'Notice')}</span>
+        <span class="reg-date">${escapeHtml(d.publicationDate || '')}</span>
+        ${d.effectiveOn ? `<span class="reg-effective">effective ${escapeHtml(d.effectiveOn)}</span>` : ''}
+      </div>
+      <a class="reg-item-title" href="${escapeHtml(d.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(d.title || '')}</a>
+      ${d.abstract ? `<div class="reg-item-body">${escapeHtml(truncateText(d.abstract, 240))}</div>` : ''}
+    </li>
+  `;
+}
+
+function renderNewsItem(n) {
+  return `
+    <li class="reg-item">
+      <div class="reg-item-meta">
+        <span class="reg-source">${escapeHtml(n.source || '')}</span>
+        ${n.publishedDate ? `<span class="reg-date">${escapeHtml(formatRegDate(n.publishedDate))}</span>` : ''}
+        ${typeof n.score === 'number' ? `<span class="reg-score">${n.score.toFixed(2)}</span>` : ''}
+      </div>
+      <a class="reg-item-title" href="${escapeHtml(n.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(n.title || '')}</a>
+      ${n.snippet ? `<div class="reg-item-body">${escapeHtml(truncateText(n.snippet, 240))}</div>` : ''}
+    </li>
+  `;
+}
+
+function truncateText(s, n) {
+  if (!s) return '';
+  return s.length > n ? s.slice(0, n - 1).trim() + '…' : s;
+}
+
+function formatRegDate(d) {
+  try { return new Date(d).toISOString().slice(0, 10); } catch { return d; }
 }
 
 function renderWeather(body, payload) {

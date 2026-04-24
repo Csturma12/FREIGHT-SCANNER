@@ -360,3 +360,104 @@ main {
   line-height: 1.45;
 }
 .weather-highlights li { margin: 0.2rem 0; }
+
+/* Regulatory Watch card */
+.reg-highlights {
+  margin: 0 0 0.85rem;
+  padding: 0 0 0 1rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+.reg-highlights li { margin: 0.2rem 0; }
+
+.reg-section { margin-bottom: 0.85rem; }
+.reg-section:last-child { margin-bottom: 0; }
+.reg-section-title {
+  margin: 0 0 0.45rem;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.reg-count {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  letter-spacing: 0;
+  text-transform: none;
+  font-weight: 400;
+}
+
+.reg-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.reg-item {
+  padding: 0.55rem 0.7rem;
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--text-dim);
+  border-radius: 4px;
+}
+.reg-item-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.6rem;
+  align-items: baseline;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  margin-bottom: 0.25rem;
+}
+.reg-type {
+  padding: 0.08rem 0.4rem;
+  border-radius: 2px;
+  border: 1px solid currentColor;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.reg-type-rule { color: var(--accent-alert); }
+.reg-type-proposed-rule { color: var(--accent-warn); }
+.reg-type-notice { color: var(--accent-cyan); }
+.reg-date { color: var(--text-muted); }
+.reg-effective { color: var(--accent-warn); }
+.reg-source { color: var(--accent-cyan); text-transform: lowercase; }
+.reg-score { color: var(--text-dim); }
+
+.reg-item-title {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  line-height: 1.35;
+  margin: 0.1rem 0 0.25rem;
+}
+.reg-item-title:hover { color: var(--accent-cyan); text-decoration: underline; }
+.reg-item-body {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.reg-empty {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  font-style: italic;
+  padding: 0.5rem 0;
+}
+
+.reg-item-title:focus-visible {
+  outline: 1px solid var(--accent-cyan);
+  outline-offset: 2px;
+}
